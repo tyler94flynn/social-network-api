@@ -1,0 +1,7 @@
+//thoguhttext
+
+//createdat
+
+//username
+
+//reactions
