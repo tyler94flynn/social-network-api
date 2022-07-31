@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+const userSchema = new Schema({
 //username
 
 //email
@@ -7,5 +8,12 @@ const { Schema, model } = require('mongoose');
 //thoughts
 
 //friends
+},
+{
+    toJSON: {
+        virtuals: true
+    },
+    id: false
+});
 
 module.exports = User;
