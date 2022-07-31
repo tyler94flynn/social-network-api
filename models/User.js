@@ -7,3 +7,5 @@ const { Schema, model } = require('mongoose');
 //thoughts
 
 //friends
+
+module.exports = User;

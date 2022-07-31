@@ -9,3 +9,5 @@ const moment = require('moment');
 //username
 
 //reactions
+
+module.exports = Thought;
