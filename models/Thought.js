@@ -3,13 +3,22 @@ const reactionSchema = require('./Reaction');
 const moment = require('moment');
 
 const thoughtSchema = new Schema({
-//thoughttext
-
-//createdat
-
-//username
-
-//reactions
+    thoughtText: {
+        type: String,
+        required: true,
+        minLength: [1, 'text must be at least 1 character long'],
+        maxLength: [280, 'text must be less than 280 characters']
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    reactions: [reactionSchema]
 },
 {
     toJSON: {

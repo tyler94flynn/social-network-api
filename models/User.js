@@ -1,13 +1,20 @@
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
-//username
-
-//email
-
-//thoughts
-
-//friends
+    username: {
+        type: String,
+        unique: true,
+        required: [true, 'username is required'],
+        trim: true
+    },
+    email: {
+        type: String,
+        required: [true, 'email is required'],
+        unique: true,
+        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Invalid email format']
+    },
+    thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
+    friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },
 {
     toJSON: {
@@ -15,5 +22,7 @@ const userSchema = new Schema({
     },
     id: false
 });
+
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = User;
